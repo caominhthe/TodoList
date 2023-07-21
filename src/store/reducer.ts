@@ -1,7 +1,8 @@
-import { todoReducer } from "../reducers";
+import { combineReducers } from "@reduxjs/toolkit";
+import { todoSlice } from "../screens";
 
-const rootReducer = {
-  todo: todoReducer,
-};
+const rootReducer = combineReducers({
+  todo: todoSlice.reducer,
+});
 
 export default rootReducer;

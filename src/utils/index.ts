@@ -1,6 +1,6 @@
-import { Todo } from '../types';
+import { Todo } from "../screens";
 
-export function createTodo(content: string) {
+export function createTodoItem(content: string) {
   const todo: Todo = {
     id: String(Date.now()),
     title: content,

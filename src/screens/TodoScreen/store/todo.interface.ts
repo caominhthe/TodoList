@@ -1,6 +1,9 @@
 export type TodoID = string;
 
-export type EditMode = 'add' | 'edit';
+export enum EditMode {
+  Add = "add",
+  Edit = "edit",
+}
 
 export interface Todo {
   id: TodoID;
@@ -9,8 +12,7 @@ export interface Todo {
 }
 
 export interface TodoState {
-  todoList: Record<TodoID, Todo>;
-  isLoading: boolean;
+  todoList: Todo[];
   error?: any;
   inputMode: EditMode;
 }

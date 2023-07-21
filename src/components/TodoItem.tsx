@@ -1,14 +1,15 @@
-import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
-import React from 'react';
-import { useCallback } from 'react';
-import { Todo } from '../types';
-import { spacing, typography } from '../theme';
+import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
+import React from "react";
+import { useCallback } from "react";
+import { spacing, typography } from "../theme";
+import Animated, { SlideInDown, SlideOutLeft } from "react-native-reanimated";
+import { Todo } from "../screens";
 
 interface TodoItemProps {
   todo: Todo;
+  isSelected: boolean;
   onDelete: (todo: Todo) => void;
   onPress: (todo: Todo) => void;
-  isSelected: boolean;
 }
 
 const TodoItem: React.FC<TodoItemProps> = ({
@@ -26,9 +27,11 @@ const TodoItem: React.FC<TodoItemProps> = ({
   }, [onDelete, todo]);
 
   return (
-    <View
+    <Animated.View
       style={[styles.container, isSelected && styles.isSelected]}
       key={todo.id}
+      entering={SlideInDown.duration(200)}
+      exiting={SlideOutLeft.duration(200)}
     >
       <TouchableOpacity
         testID="todo-item"
@@ -42,7 +45,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
       <TouchableOpacity testID="delete-button" onPress={onPressDelete}>
         <Text style={styles.delete}>Delete</Text>
       </TouchableOpacity>
-    </View>
+    </Animated.View>
   );
 };
 
@@ -50,12 +53,12 @@ export default TodoItem;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    minHeight: 40,
+    flexDirection: "row",
+    alignItems: "center",
+    minHeight: 60,
     paddingVertical: spacing.small,
     borderWidth: 1,
-    borderColor: 'grey',
+    borderColor: "grey",
     borderRadius: spacing.small,
     paddingHorizontal: spacing.large,
     paddingTop: spacing.small,
@@ -63,12 +66,12 @@ const styles = StyleSheet.create({
     marginHorizontal: spacing.large,
   },
   delete: {
-    color: 'blue',
+    color: "blue",
     fontSize: typography.fontSize.medium,
   },
   rightIcon: {
     marginRight: spacing.medium,
-    marginLeft: 'auto',
+    marginLeft: "auto",
   },
   leftIcon: {
     marginLeft: spacing.medium,
@@ -76,13 +79,13 @@ const styles = StyleSheet.create({
   title: {
     paddingHorizontal: spacing.medium,
     fontSize: typography.fontSize.medium,
-    fontWeight: 'bold',
-    flexWrap: 'wrap',
+    fontWeight: "bold",
+    flexWrap: "wrap",
   },
   titleButton: {
     flex: 1,
   },
   isSelected: {
-    backgroundColor: 'grey',
+    backgroundColor: "grey",
   },
 });
