@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoInputGroup should render correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "paddingBottom": 4,
+      "paddingHorizontal": 12,
+      "width": 750,
+    }
+  }
+>
+  <TextInput
+    multiline={true}
+    onChangeText={[MockFunction]}
+    placeholder="Add new todo"
+    style={
+      {
+        "borderColor": "black",
+        "borderWidth": 1,
+        "flex": 1,
+        "flexShrink": 1,
+        "fontSize": 20,
+        "fontWeight": "700",
+      }
+    }
+    value="test"
+  />
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+    testID="submit-button"
+  >
+    <Text />
+  </View>
+</View>
+`;

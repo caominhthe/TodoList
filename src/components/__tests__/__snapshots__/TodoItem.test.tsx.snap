@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoItem should render correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "alignItems": "center",
+        "borderColor": "grey",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "marginHorizontal": 24,
+        "marginTop": 8,
+        "minHeight": 40,
+        "paddingHorizontal": 24,
+        "paddingTop": 8,
+        "paddingVertical": 8,
+      },
+      false,
+    ]
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "flex": 1,
+        "opacity": 1,
+      }
+    }
+    testID="todo-item"
+  >
+    <Text
+      style={
+        {
+          "flexWrap": "wrap",
+          "fontSize": 16,
+          "fontWeight": "bold",
+          "paddingHorizontal": 12,
+        }
+      }
+      testID="item-title"
+    >
+      test
+    </Text>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+    testID="delete-button"
+  >
+    <Text
+      style={
+        {
+          "color": "blue",
+          "fontSize": 16,
+        }
+      }
+    >
+      Delete
+    </Text>
+  </View>
+</View>
+`;

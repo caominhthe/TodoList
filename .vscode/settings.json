@@ -1,0 +1,30 @@
+{
+  "eslint.workingDirectories": ["src/*"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true
+  },
+  "javascript.format.enable": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.tabSize": 2,
+  "peacock.color": "#215732",
+  "cSpell.words": ["CUST", "reduxsauce", "testcases", "Vikki"],
+  "i18n-ally.localesPaths": [
+    "src/i18n",
+    "coverage/lcov-report/src/i18n",
+    "ios/Pods/Flipper-Folly/folly/lang",
+    "ios/Pods/Flipper-Boost-iOSX/boost/locale",
+    "ios/Pods/RCT-Folly/folly/lang",
+    "ios/Pods/boost/boost/locale",
+    "ios/Pods/Flipper-Boost-iOSX/boost/predef/language",
+    "ios/Pods/boost/boost/predef/language",
+    "ios/Pods/Headers/Private/Flipper-Folly/folly/lang",
+    "ios/Pods/Headers/Private/RCT-Folly/folly/lang",
+    "ios/Pods/Headers/Public/Flipper-Folly/folly/lang",
+    "ios/Pods/Headers/Public/RCT-Folly/folly/lang"
+  ],
+  "i18n-ally.keystyle": "nested"
+}
