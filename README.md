@@ -12,4 +12,6 @@ For Android: Using command `yarn android`
 
 ## Demo
 
+![](https://github.com/caominhthe/TodoList/blob/master/demo/gif/ScreenRecord.gif)
+
 Author: caominhthetg@gmail.com
