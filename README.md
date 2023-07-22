@@ -12,6 +12,6 @@ For Android: Using command `yarn android`
 
 ## Demo
 
-<img src="https://github.com/caominhthe/TodoList/blob/master/demo/gif/ScreenRecord.gif" width="480"/>
+<img src="https://github.com/caominhthe/TodoList/blob/master/demo/gif/ScreenRecord.gif" width="240"/>
 
 Author: caominhthetg@gmail.com
