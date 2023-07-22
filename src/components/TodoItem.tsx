@@ -12,7 +12,6 @@ import { spacing, typography } from "../theme";
 import Animated, {
   ExitAnimationsValues,
   SlideInDown,
-  useSharedValue,
   withTiming,
 } from "react-native-reanimated";
 import { Todo } from "../screens";
@@ -38,8 +37,6 @@ const TodoItem: React.FC<TodoItemProps> = ({
   onPressCheckBox,
   isSelected,
 }) => {
-  const height = useSharedValue(ITEM_HEIGHT);
-
   const onPressTodo = useCallback(() => {
     onPress?.(todo);
   }, [onPress, todo]);

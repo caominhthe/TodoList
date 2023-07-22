@@ -1,12 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import {
-  FlatList,
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  Keyboard,
-} from "react-native";
+import { StyleSheet, View, Text, TextInput, Keyboard } from "react-native";
 import { useSelector } from "react-redux";
 import { RootStackScreenProps, ScreenNames } from "@routers";
 import { KeyboardAvoidContainer, TodoInputGroup, TodoItem } from "@components";
@@ -36,13 +29,20 @@ export const TodoScreen: React.FC<TodoScreenProps> = () => {
 
   const { createTodo, updateToDo, deleteTodo, changeInputMode } = useToDo();
 
+  const clearInput = () => {
+    setSelectedTodo(null);
+    setContent("");
+    changeInputMode(EditMode.Add);
+    Keyboard.dismiss();
+  };
+
   //Clear input content Items after create new todo item
   const onCreateTodo = useCallback(() => {
     if (content !== "") {
       createTodo(content);
       clearInput();
     }
-  }, [content]);
+  }, [content, createTodo]);
 
   //Clear input content and selected Items after Update new todo item
   const onUpdateTodo = useCallback(() => {
@@ -50,7 +50,7 @@ export const TodoScreen: React.FC<TodoScreenProps> = () => {
       updateToDo({ title: content.trim() }, selectedTodo.id);
       clearInput();
     }
-  }, [selectedTodo, content]);
+  }, [selectedTodo, content, updateToDo]);
 
   // Reset content input and inputMode after delete to avoid confuse when edit
   const onPressDelete = useCallback(
@@ -75,13 +75,6 @@ export const TodoScreen: React.FC<TodoScreenProps> = () => {
     updateToDo({ isDone: !todo.isDone }, todo.id);
   }, []);
 
-  const clearInput = () => {
-    setSelectedTodo(null);
-    setContent("");
-    changeInputMode(EditMode.Add);
-    Keyboard.dismiss();
-  };
-
   //If cancel keyboard during edit, it will cancel the edit mode
   const cancelEdit = () => {
     if (!isAddMode) {
@@ -104,7 +97,7 @@ export const TodoScreen: React.FC<TodoScreenProps> = () => {
   const renderEmptyList = () => {
     return (
       <View style={styles.emptyContainer}>
-        <Text style={styles.emptyText}>Let's add some Todo</Text>
+        <Text style={styles.emptyText}>{`Let's add some Todo`}</Text>
       </View>
     );
   };

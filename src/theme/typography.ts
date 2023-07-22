@@ -1,5 +1,3 @@
-import { Platform } from 'react-native';
-
 /**
  * You can find a list of available fonts on both iOS and Android here:
  * https://github.com/react-native-training/react-native-fonts

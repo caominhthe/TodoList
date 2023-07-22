@@ -4,7 +4,6 @@ import {
   ViewProps,
   StyleSheet,
   KeyboardAvoidingView,
-  KeyboardAvoidingViewProps,
   Platform,
 } from "react-native";
 
@@ -29,7 +28,7 @@ const KeyboardAvoidContainer: React.FC<KeyboardAvoidContainerProps> = ({
     () => ({
       marginBottom: insets.bottom,
     }),
-    [insets.bottom, insets.top]
+    [insets.bottom]
   );
 
   if (withSafeKeyboard) {

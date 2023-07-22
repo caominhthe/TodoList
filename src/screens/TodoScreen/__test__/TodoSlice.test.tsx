@@ -1,6 +1,5 @@
 import { configureStore, EnhancedStore } from "@reduxjs/toolkit";
 import { createTodo, updateTodo, deleteTodo, todoSlice } from "../store";
-import { Todo } from "../store";
 
 describe("Todo slice", () => {
   let store: EnhancedStore;

@@ -6,14 +6,9 @@ import { Colors } from "../theme/color";
 interface CheckBoxProps {
   onChange?: (checked: boolean) => void;
   value?: boolean;
-  size?: number;
 }
 
-const Checkbox: React.FC<CheckBoxProps> = ({
-  value = false,
-  onChange,
-  size = 20,
-}) => {
+const Checkbox: React.FC<CheckBoxProps> = ({ value = false, onChange }) => {
   const [isChecked, setIsChecked] = useState(value);
 
   const toggleCheckbox = () => {

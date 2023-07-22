@@ -1,12 +1,9 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { RootStackParamList } from "./types";
 import ScreenNames from "./Routes";
 import { TodoScreen } from "@screens";
-import { useAppState } from "@hooks";
 
 const Navigator = () => {
   return (
