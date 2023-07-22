@@ -9,10 +9,20 @@ const todoSelector = (state: RootState) => {
 
 export const selectTodos = createSelector(
   todoSelector,
-  (state) => (Object.values(state.todoList) ?? []) as Todo[]
+  (state) => state.todoList ?? ([] as Todo[])
+);
+
+export const selectDoneTodos = createSelector(
+  todoSelector,
+  (state) => state.todoList.filter((todo) => todo.isDone) ?? ([] as Todo[])
 );
 
 export const selectTodoEditMode = createSelector(
   todoSelector,
   (state) => state.inputMode
+);
+
+export const selectTodoByID = createSelector(
+  [todoSelector, (_, id) => id],
+  (state, id) => state.todoList.find((item) => item.id === id)
 );

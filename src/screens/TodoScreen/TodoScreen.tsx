@@ -10,10 +10,17 @@ import {
 import { useSelector } from "react-redux";
 import { RootStackScreenProps, ScreenNames } from "@routers";
 import { KeyboardAvoidContainer, TodoInputGroup, TodoItem } from "@components";
-import { EditMode, Todo, selectTodoEditMode, selectTodos } from "./store";
+import {
+  EditMode,
+  Todo,
+  selectTodoEditMode,
+  selectTodos,
+  selectDoneTodos,
+} from "./store";
 import { Palette, spacing, typography } from "@theme";
 import { useToDo } from "./useTodo";
 import { Colors } from "@root/src/theme/color";
+import Animated, { Layout } from "react-native-reanimated";
 
 type TodoScreenProps = RootStackScreenProps<ScreenNames.Todo>;
 
@@ -22,6 +29,8 @@ export const TodoScreen: React.FC<TodoScreenProps> = () => {
   const [content, setContent] = useState("");
   const inputMode = useSelector(selectTodoEditMode);
   const todoList: Todo[] = useSelector(selectTodos);
+  const doneTodos: Todo[] = useSelector(selectDoneTodos);
+
   const isAddMode = inputMode === EditMode.Add;
   const inputRef = useRef<TextInput>(null);
 
@@ -92,14 +101,33 @@ export const TodoScreen: React.FC<TodoScreenProps> = () => {
     );
   };
 
+  const renderEmptyList = () => {
+    return (
+      <View style={styles.emptyContainer}>
+        <Text style={styles.emptyText}>Let's add some Todo</Text>
+      </View>
+    );
+  };
+
+  const renderHeader = () => {
+    return (
+      <View style={styles.header}>
+        <Text>{`Today tasks: ${doneTodos.length} / ${todoList.length} `}</Text>
+      </View>
+    );
+  };
+
   return (
     <KeyboardAvoidContainer withSafeKeyboard>
-      <FlatList<Todo>
+      <Animated.FlatList<Todo>
         showsVerticalScrollIndicator={false}
         data={todoList}
         keyExtractor={(todo) => String(todo.id)}
         renderItem={({ item }) => renderItem(item)}
         contentContainerStyle={styles.flatListContent}
+        ListEmptyComponent={renderEmptyList}
+        itemLayoutAnimation={Layout.springify()}
+        ListHeaderComponent={renderHeader}
       />
       <View style={styles.inputContainer}>
         <TodoInputGroup
@@ -144,5 +172,19 @@ const styles = StyleSheet.create({
     padding: spacing.medium,
     borderRadius: spacing.small,
     overflow: "hidden",
+  },
+  emptyContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: spacing.medium,
+  },
+  emptyText: {
+    fontSize: typography.fontSize.medium,
+    color: "gray",
+  },
+  header: {
+    paddingHorizontal: spacing.large,
+    paddingVertical: spacing.small,
   },
 });

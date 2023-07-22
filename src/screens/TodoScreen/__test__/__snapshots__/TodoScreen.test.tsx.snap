@@ -1,30 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Given Todo Screen should render correctly with todo items 1`] = `
-<RCTSafeAreaView
+<View
+  onLayout={[Function]}
+  pointerEvents="box-none"
   style={
-    {
-      "alignItems": "center",
-      "backgroundColor": "#FFFFFF",
-      "flex": 1,
-    }
+    [
+      {
+        "backgroundColor": "#FFFFFF",
+        "flex": 1,
+      },
+      {
+        "paddingBottom": 0,
+      },
+    ]
   }
 >
   <View
-    onLayout={[Function]}
     style={
       [
         {
+          "backgroundColor": "#FFFFFF",
           "flex": 1,
-          "justifyContent": "space-between",
         },
         {
-          "paddingBottom": 0,
+          "marginBottom": 0,
         },
+        undefined,
       ]
     }
   >
     <RCTScrollView
+      CellRendererComponent={[Function]}
+      ListEmptyComponent={[Function]}
+      ListHeaderComponent={[Function]}
+      animatedStyle={
+        {
+          "value": {},
+        }
+      }
+      collapsable={false}
       contentContainerStyle={
         {
           "flexGrow": 1,
@@ -35,8 +50,9 @@ exports[`Given Todo Screen should render correctly with todo items 1`] = `
       data={
         [
           {
-            "createdAt": 1689951787844,
+            "createdAt": "1690031534767",
             "id": "id",
+            "isDone": false,
             "title": "test",
           },
         ]
@@ -60,125 +76,249 @@ exports[`Given Todo Screen should render correctly with todo items 1`] = `
     >
       <View>
         <View
-          onFocusCapture={[Function]}
           onLayout={[Function]}
-          style={null}
         >
           <View
             style={
-              [
+              {
+                "paddingHorizontal": 24,
+                "paddingVertical": 8,
+              }
+            }
+          >
+            <Text>
+              Today tasks: 0 / 1 
+            </Text>
+          </View>
+        </View>
+        <View
+          animatedStyle={
+            {
+              "value": {},
+            }
+          }
+          collapsable={false}
+          layout={
+            LinearTransition {
+              "build": [Function],
+              "callbackV": undefined,
+              "dampingV": undefined,
+              "delayV": undefined,
+              "durationV": undefined,
+              "easingV": undefined,
+              "initialValues": undefined,
+              "massV": undefined,
+              "overshootClampingV": undefined,
+              "randomizeDelay": false,
+              "restDisplacementThresholdV": undefined,
+              "restSpeedThresholdV": undefined,
+              "rotateV": undefined,
+              "stiffnessV": undefined,
+              "type": [Function],
+            }
+          }
+          onLayout={[Function]}
+          style={{}}
+        >
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+          >
+            <View
+              animatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              collapsable={false}
+              entering={
+                SlideInDown {
+                  "build": [Function],
+                  "callbackV": undefined,
+                  "dampingV": undefined,
+                  "delayV": undefined,
+                  "durationV": 200,
+                  "easingV": undefined,
+                  "initialValues": undefined,
+                  "massV": undefined,
+                  "overshootClampingV": undefined,
+                  "randomizeDelay": false,
+                  "restDisplacementThresholdV": undefined,
+                  "restSpeedThresholdV": undefined,
+                  "rotateV": undefined,
+                  "stiffnessV": undefined,
+                  "type": undefined,
+                }
+              }
+              exiting={[Function]}
+              style={
                 {
                   "alignItems": "center",
                   "borderColor": "grey",
                   "borderRadius": 8,
                   "borderWidth": 1,
                   "flexDirection": "row",
+                  "height": 65,
                   "marginHorizontal": 24,
                   "marginTop": 8,
-                  "minHeight": 40,
+                  "overflow": "hidden",
                   "paddingHorizontal": 24,
                   "paddingTop": 8,
                   "paddingVertical": 8,
-                },
-                false,
-              ]
-            }
-          >
-            <View
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
                 }
               }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "flex": 1,
-                  "opacity": 1,
-                }
-              }
-              testID="todo-item"
             >
-              <Text
-                style={
+              <View
+                accessibilityState={
                   {
-                    "flexWrap": "wrap",
-                    "fontSize": 16,
-                    "fontWeight": "bold",
-                    "paddingHorizontal": 12,
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
                 }
-                testID="item-title"
-              >
-                test
-              </Text>
-            </View>
-            <View
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
                 }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "opacity": 1,
-                }
-              }
-              testID="delete-button"
-            >
-              <Text
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "color": "blue",
-                    "fontSize": 16,
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "opacity": 1,
                   }
                 }
               >
-                Delete
-              </Text>
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "#4b7bad",
+                        "borderRadius": 4,
+                        "borderWidth": 2,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      },
+                      null,
+                    ]
+                  }
+                />
+              </View>
+              <View
+                style={
+                  {
+                    "flex": 1,
+                  }
+                }
+                testID="todo-item"
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "flexWrap": "wrap",
+                        "fontSize": 16,
+                        "fontWeight": "bold",
+                        "paddingHorizontal": 12,
+                      },
+                      {},
+                    ]
+                  }
+                  testID="item-title"
+                >
+                  test
+                </Text>
+              </View>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "opacity": 1,
+                  }
+                }
+                testID="delete-button"
+              >
+                <Text
+                  style={
+                    {
+                      "color": "#F44336",
+                      "fontSize": 16,
+                    }
+                  }
+                >
+                  Delete
+                </Text>
+              </View>
             </View>
           </View>
         </View>
@@ -206,16 +346,20 @@ exports[`Given Todo Screen should render correctly with todo items 1`] = `
       >
         <TextInput
           multiline={true}
+          onBlur={[Function]}
           onChangeText={[Function]}
-          placeholder="Add new todo"
+          placeholder="Add new todo here"
           style={
             {
-              "borderColor": "black",
+              "borderColor": "#4b7bad",
+              "borderRadius": 8,
               "borderWidth": 1,
               "flex": 1,
-              "flexShrink": 1,
               "fontSize": 20,
-              "fontWeight": "700",
+              "lineHeight": 30,
+              "marginRight": 8,
+              "paddingHorizontal": 8,
+              "paddingVertical": 8,
             }
           }
           value=""
@@ -258,7 +402,7 @@ exports[`Given Todo Screen should render correctly with todo items 1`] = `
           <Text
             style={
               {
-                "backgroundColor": "#e5e5e5",
+                "backgroundColor": "#e6eff7",
                 "borderRadius": 8,
                 "fontSize": 16,
                 "fontWeight": "bold",
@@ -273,5 +417,5 @@ exports[`Given Todo Screen should render correctly with todo items 1`] = `
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;

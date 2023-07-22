@@ -9,7 +9,12 @@ import {
 import React, { useMemo } from "react";
 import { useCallback } from "react";
 import { spacing, typography } from "../theme";
-import Animated, { SlideInDown, SlideOutLeft } from "react-native-reanimated";
+import Animated, {
+  ExitAnimationsValues,
+  SlideInDown,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated";
 import { Todo } from "../screens";
 import Checkbox from "./Checkbox";
 import { Colors } from "../theme/color";
@@ -22,6 +27,10 @@ interface TodoItemProps {
   onPress: (todo: Todo) => void;
 }
 
+const ITEM_HEIGHT = 65;
+
+const EXIT_ANIMATION_DURATION = 200;
+
 const TodoItem: React.FC<TodoItemProps> = ({
   todo,
   onPress,
@@ -29,6 +38,8 @@ const TodoItem: React.FC<TodoItemProps> = ({
   onPressCheckBox,
   isSelected,
 }) => {
+  const height = useSharedValue(ITEM_HEIGHT);
+
   const onPressTodo = useCallback(() => {
     onPress?.(todo);
   }, [onPress, todo]);
@@ -41,13 +52,31 @@ const TodoItem: React.FC<TodoItemProps> = ({
     return todo.isDone ? { textDecorationLine: "line-through" } : {};
   }, [todo.isDone]);
 
+  const exiting = (values: ExitAnimationsValues) => {
+    "worklet";
+    const animations = {
+      originX: withTiming(0, { duration: EXIT_ANIMATION_DURATION }),
+      opacity: withTiming(0.5, { duration: EXIT_ANIMATION_DURATION }),
+      height: withTiming(0, { duration: EXIT_ANIMATION_DURATION }),
+    };
+    const initialValues = {
+      originX: values.currentOriginX,
+      height: values.currentHeight,
+      opacity: 1,
+    };
+    return {
+      initialValues,
+      animations,
+    };
+  };
+
   return (
     <Pressable onPress={onPressTodo}>
       <Animated.View
         style={[styles.container, isSelected && styles.isSelected]}
         key={todo.id}
         entering={SlideInDown.duration(200)}
-        exiting={SlideOutLeft.duration(200)}
+        exiting={exiting}
       >
         <Checkbox onChange={() => onPressCheckBox(todo)} value={todo.isDone} />
         <View testID="todo-item" style={styles.titleButton}>
@@ -69,7 +98,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    minHeight: 60,
     paddingVertical: spacing.small,
     borderWidth: 1,
     borderColor: "grey",
@@ -78,9 +106,11 @@ const styles = StyleSheet.create({
     paddingTop: spacing.small,
     marginTop: spacing.small,
     marginHorizontal: spacing.large,
+    overflow: "hidden",
+    height: ITEM_HEIGHT,
   },
   delete: {
-    color: "blue",
+    color: Colors.Error,
     fontSize: typography.fontSize.medium,
   },
   rightIcon: {

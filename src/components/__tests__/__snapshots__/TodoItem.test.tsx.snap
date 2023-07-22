@@ -2,120 +2,204 @@
 
 exports[`TodoItem should render correctly 1`] = `
 <View
-  style={
-    [
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+>
+  <View
+    animatedStyle={
+      {
+        "value": {},
+      }
+    }
+    collapsable={false}
+    entering={
+      SlideInDown {
+        "build": [Function],
+        "callbackV": undefined,
+        "dampingV": undefined,
+        "delayV": undefined,
+        "durationV": 200,
+        "easingV": undefined,
+        "initialValues": undefined,
+        "massV": undefined,
+        "overshootClampingV": undefined,
+        "randomizeDelay": false,
+        "restDisplacementThresholdV": undefined,
+        "restSpeedThresholdV": undefined,
+        "rotateV": undefined,
+        "stiffnessV": undefined,
+        "type": undefined,
+      }
+    }
+    exiting={[Function]}
+    style={
       {
         "alignItems": "center",
         "borderColor": "grey",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
+        "height": 65,
         "marginHorizontal": 24,
         "marginTop": 8,
-        "minHeight": 40,
+        "overflow": "hidden",
         "paddingHorizontal": 24,
         "paddingTop": 8,
         "paddingVertical": 8,
-      },
-      false,
-    ]
-  }
->
-  <View
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
       }
     }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      {
-        "flex": 1,
-        "opacity": 1,
-      }
-    }
-    testID="todo-item"
   >
-    <Text
-      style={
+    <View
+      accessibilityState={
         {
-          "flexWrap": "wrap",
-          "fontSize": 16,
-          "fontWeight": "bold",
-          "paddingHorizontal": 12,
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
         }
       }
-      testID="item-title"
-    >
-      test
-    </Text>
-  </View>
-  <View
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
       }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      {
-        "opacity": 1,
-      }
-    }
-    testID="delete-button"
-  >
-    <Text
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
         {
-          "color": "blue",
-          "fontSize": 16,
+          "alignItems": "center",
+          "flexDirection": "row",
+          "opacity": 1,
         }
       }
     >
-      Delete
-    </Text>
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "borderColor": "#4b7bad",
+              "borderRadius": 4,
+              "borderWidth": 2,
+              "height": 20,
+              "justifyContent": "center",
+              "width": 20,
+            },
+            null,
+          ]
+        }
+      />
+    </View>
+    <View
+      style={
+        {
+          "flex": 1,
+        }
+      }
+      testID="todo-item"
+    >
+      <Text
+        style={
+          [
+            {
+              "flexWrap": "wrap",
+              "fontSize": 16,
+              "fontWeight": "bold",
+              "paddingHorizontal": 12,
+            },
+            {},
+          ]
+        }
+        testID="item-title"
+      >
+        test
+      </Text>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+      testID="delete-button"
+    >
+      <Text
+        style={
+          {
+            "color": "#F44336",
+            "fontSize": 16,
+          }
+        }
+      >
+        Delete
+      </Text>
+    </View>
   </View>
 </View>
 `;

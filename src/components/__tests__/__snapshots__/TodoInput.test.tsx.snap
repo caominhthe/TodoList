@@ -15,15 +15,18 @@ exports[`TodoInputGroup should render correctly 1`] = `
   <TextInput
     multiline={true}
     onChangeText={[MockFunction]}
-    placeholder="Add new todo"
+    placeholder="Add new todo here"
     style={
       {
-        "borderColor": "black",
+        "borderColor": "#4b7bad",
+        "borderRadius": 8,
         "borderWidth": 1,
         "flex": 1,
-        "flexShrink": 1,
         "fontSize": 20,
-        "fontWeight": "700",
+        "lineHeight": 30,
+        "marginRight": 8,
+        "paddingHorizontal": 8,
+        "paddingVertical": 8,
       }
     }
     value="test"
