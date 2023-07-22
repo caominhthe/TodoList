@@ -11,12 +11,12 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Palette } from "../theme";
 
-interface SafeAreaContainerProps extends ViewProps {
+interface KeyboardAvoidContainerProps extends ViewProps {
   withSafeKeyboard?: boolean;
   keyboardOffset?: number;
 }
 
-const SafeAreaContainer: React.FC<SafeAreaContainerProps> = ({
+const KeyboardAvoidContainer: React.FC<KeyboardAvoidContainerProps> = ({
   style,
   children,
   withSafeKeyboard = false,
@@ -35,17 +35,13 @@ const SafeAreaContainer: React.FC<SafeAreaContainerProps> = ({
   if (withSafeKeyboard) {
     return (
       <KeyboardAvoidingView
+        style={styles.keyboard}
         enabled={Platform.OS === "ios"}
         behavior={"padding"}
-        style={styles.keyboard}
         pointerEvents={"box-none"}
         keyboardVerticalOffset={-insets.bottom + keyboardOffset}
       >
-        <View
-          style={[styles.container, margin, style]}
-          pointerEvents={"box-none"}
-          {...props}
-        >
+        <View style={[styles.container, margin, style]} {...props}>
           {children}
         </View>
       </KeyboardAvoidingView>
@@ -63,8 +59,8 @@ const SafeAreaContainer: React.FC<SafeAreaContainerProps> = ({
   );
 };
 
-export default SafeAreaContainer;
-export type { SafeAreaContainerProps };
+export default KeyboardAvoidContainer;
+export type { KeyboardAvoidContainerProps };
 
 const styles = StyleSheet.create({
   keyboard: {

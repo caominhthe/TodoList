@@ -9,6 +9,7 @@ export interface Todo {
   id: TodoID;
   title: string;
   createdAt: number;
+  isDone: boolean;
 }
 
 export interface TodoState {

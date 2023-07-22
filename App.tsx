@@ -5,6 +5,9 @@ import { PersistGate } from "redux-persist/integration/react";
 
 import { Navigator } from "@routers";
 import { persistor, store } from "@store";
+import { LogBox } from "react-native";
+
+LogBox.ignoreAllLogs();
 
 export default function App() {
   return (

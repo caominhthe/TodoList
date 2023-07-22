@@ -13,12 +13,18 @@ export const todoSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    updateTodo: (state, action: PayloadAction<ITodo>) => {
+    updateTodo: (
+      state,
+      action: PayloadAction<{ partialTodo: Partial<ITodo>; id: TodoID }>
+    ) => {
       const index = state.todoList.findIndex(
         (item) => item.id === action.payload.id
       );
       if (index !== -1) {
-        state.todoList[index] = action.payload;
+        state.todoList[index] = {
+          ...state.todoList[index],
+          ...action.payload.partialTodo,
+        };
       }
     },
     deleteTodo: (state, action: PayloadAction<TodoID>) => {
@@ -30,7 +36,11 @@ export const todoSlice = createSlice({
       const newTodo = createTodoItem(action.payload);
       state.todoList.push(newTodo);
     },
+    changeInputMode: (state, action: PayloadAction<EditMode>) => {
+      state.inputMode = action.payload;
+    },
   },
 });
 
-export const { updateTodo, deleteTodo, createTodo } = todoSlice.actions;
+export const { updateTodo, deleteTodo, createTodo, changeInputMode } =
+  todoSlice.actions;

@@ -1,12 +1,19 @@
-import React, { useCallback, useState } from "react";
-import { FlatList, StyleSheet, View, Text } from "react-native";
+import React, { useCallback, useRef, useState } from "react";
+import {
+  FlatList,
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  Keyboard,
+} from "react-native";
 import { useSelector } from "react-redux";
 import { RootStackScreenProps, ScreenNames } from "@routers";
-import { SafeAreaContainer, TodoInputGroup, TodoItem } from "@components";
-import { Todo, selectTodoEditMode, selectTodos, setTodoMode } from "./store";
+import { KeyboardAvoidContainer, TodoInputGroup, TodoItem } from "@components";
+import { EditMode, Todo, selectTodoEditMode, selectTodos } from "./store";
 import { Palette, spacing, typography } from "@theme";
-import { useAppDispatch } from "@root/src/hooks/useAppDispatch";
 import { useToDo } from "./useTodo";
+import { Colors } from "@root/src/theme/color";
 
 type TodoScreenProps = RootStackScreenProps<ScreenNames.Todo>;
 
@@ -15,42 +22,63 @@ export const TodoScreen: React.FC<TodoScreenProps> = () => {
   const [content, setContent] = useState("");
   const inputMode = useSelector(selectTodoEditMode);
   const todoList: Todo[] = useSelector(selectTodos);
+  const isAddMode = inputMode === EditMode.Add;
+  const inputRef = useRef<TextInput>(null);
 
-  const { createTodo, updateToDo, deleteTodo } = useToDo();
+  const { createTodo, updateToDo, deleteTodo, changeInputMode } = useToDo();
 
   //Clear input content Items after create new todo item
   const onCreateTodo = useCallback(() => {
     if (content !== "") {
       createTodo(content);
-      setSelectedTodo(null);
-      setContent("");
+      clearInput();
     }
   }, [content]);
 
   //Clear input content and selected Items after Update new todo item
   const onUpdateTodo = useCallback(() => {
     if (selectedTodo && content !== "") {
-      updateToDo(content, selectedTodo);
-      setContent("");
-      setSelectedTodo(null);
+      updateToDo({ title: content.trim() }, selectedTodo.id);
+      clearInput();
     }
   }, [selectedTodo, content]);
 
   // Reset content input and inputMode after delete to avoid confuse when edit
-  const onPressDelete = useCallback((todo: Todo) => {
-    setContent("");
-    deleteTodo(todo);
-  }, []);
+  const onPressDelete = useCallback(
+    (todo: Todo) => {
+      deleteTodo(todo);
+    },
+    [deleteTodo]
+  );
 
   // Input turn into edit inputMode when click on an item, selected item will be highlight
   const onPressItem = useCallback(
     (todo: Todo) => {
       setSelectedTodo(todo);
       setContent(todo.title);
-      // dispatch(setTodoMode("edit"));
+      changeInputMode(EditMode.Edit);
+      inputRef.current?.focus();
     },
     [inputMode]
   );
+
+  const onPressCheckBox = useCallback((todo: Todo) => {
+    updateToDo({ isDone: !todo.isDone }, todo.id);
+  }, []);
+
+  const clearInput = () => {
+    setSelectedTodo(null);
+    setContent("");
+    changeInputMode(EditMode.Add);
+    Keyboard.dismiss();
+  };
+
+  //If cancel keyboard during edit, it will cancel the edit mode
+  const cancelEdit = () => {
+    if (!isAddMode) {
+      clearInput();
+    }
+  };
 
   const renderItem = (todo: Todo) => {
     return (
@@ -58,13 +86,14 @@ export const TodoScreen: React.FC<TodoScreenProps> = () => {
         todo={todo}
         onPress={onPressItem}
         onDelete={onPressDelete}
+        onPressCheckBox={onPressCheckBox}
         isSelected={todo.id === selectedTodo?.id}
       />
     );
   };
 
   return (
-    <SafeAreaContainer withSafeKeyboard>
+    <KeyboardAvoidContainer withSafeKeyboard>
       <FlatList<Todo>
         showsVerticalScrollIndicator={false}
         data={todoList}
@@ -76,15 +105,15 @@ export const TodoScreen: React.FC<TodoScreenProps> = () => {
         <TodoInputGroup
           value={content}
           onChangeText={(text) => setContent(text)}
-          onPressButton={inputMode === "add" ? onCreateTodo : onUpdateTodo}
+          onPressButton={isAddMode ? onCreateTodo : onUpdateTodo}
+          onBlur={cancelEdit}
+          inputRef={inputRef}
           button={
-            <Text style={styles.inputButton}>
-              {inputMode === "add" ? "Add" : "Edit"}
-            </Text>
+            <Text style={styles.inputButton}>{isAddMode ? "Add" : "Edit"}</Text>
           }
         />
       </View>
-    </SafeAreaContainer>
+    </KeyboardAvoidContainer>
   );
 };
 
@@ -111,9 +140,9 @@ const styles = StyleSheet.create({
   inputButton: {
     fontWeight: "bold",
     fontSize: typography.fontSize.medium,
-    backgroundColor: "#e5e5e5",
+    backgroundColor: Colors.Background,
     padding: spacing.medium,
-    borderRadius: 8,
+    borderRadius: spacing.small,
     overflow: "hidden",
   },
 });

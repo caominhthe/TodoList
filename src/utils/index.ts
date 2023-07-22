@@ -5,6 +5,7 @@ export function createTodoItem(content: string) {
     id: String(Date.now()),
     title: content,
     createdAt: Date.now(),
+    isDone: false,
   };
   return todo;
 }

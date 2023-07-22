@@ -1,14 +1,24 @@
-import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
-import React from "react";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Text,
+  TextStyle,
+  Pressable,
+} from "react-native";
+import React, { useMemo } from "react";
 import { useCallback } from "react";
 import { spacing, typography } from "../theme";
 import Animated, { SlideInDown, SlideOutLeft } from "react-native-reanimated";
 import { Todo } from "../screens";
+import Checkbox from "./Checkbox";
+import { Colors } from "../theme/color";
 
 interface TodoItemProps {
   todo: Todo;
   isSelected: boolean;
   onDelete: (todo: Todo) => void;
+  onPressCheckBox: (todo: Todo) => void;
   onPress: (todo: Todo) => void;
 }
 
@@ -16,6 +26,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
   todo,
   onPress,
   onDelete,
+  onPressCheckBox,
   isSelected,
 }) => {
   const onPressTodo = useCallback(() => {
@@ -26,26 +37,29 @@ const TodoItem: React.FC<TodoItemProps> = ({
     onDelete?.(todo);
   }, [onDelete, todo]);
 
+  const textStyle = useMemo((): TextStyle => {
+    return todo.isDone ? { textDecorationLine: "line-through" } : {};
+  }, [todo.isDone]);
+
   return (
-    <Animated.View
-      style={[styles.container, isSelected && styles.isSelected]}
-      key={todo.id}
-      entering={SlideInDown.duration(200)}
-      exiting={SlideOutLeft.duration(200)}
-    >
-      <TouchableOpacity
-        testID="todo-item"
-        style={styles.titleButton}
-        onPress={onPressTodo}
+    <Pressable onPress={onPressTodo}>
+      <Animated.View
+        style={[styles.container, isSelected && styles.isSelected]}
+        key={todo.id}
+        entering={SlideInDown.duration(200)}
+        exiting={SlideOutLeft.duration(200)}
       >
-        <Text testID="item-title" style={styles.title}>
-          {todo.title}
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity testID="delete-button" onPress={onPressDelete}>
-        <Text style={styles.delete}>Delete</Text>
-      </TouchableOpacity>
-    </Animated.View>
+        <Checkbox onChange={() => onPressCheckBox(todo)} value={todo.isDone} />
+        <View testID="todo-item" style={styles.titleButton}>
+          <Text testID="item-title" style={[styles.title, textStyle]}>
+            {todo.title}
+          </Text>
+        </View>
+        <TouchableOpacity testID="delete-button" onPress={onPressDelete}>
+          <Text style={styles.delete}>Delete</Text>
+        </TouchableOpacity>
+      </Animated.View>
+    </Pressable>
   );
 };
 
@@ -86,6 +100,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   isSelected: {
-    backgroundColor: "grey",
+    backgroundColor: Colors.Background,
   },
 });

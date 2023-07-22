@@ -13,20 +13,26 @@ interface TodoInputGroup {
   value?: string;
   onChangeText?: (text: string) => void;
   onPressButton?: () => void;
+  onBlur?: () => void;
   button: React.ReactNode | any;
+  inputRef?: React.Ref<TextInput>;
 }
 
 const TodoInputGroup: React.FC<TodoInputGroup> = ({
   value,
   onChangeText,
   onPressButton,
+  onBlur,
   button,
+  inputRef,
 }) => {
   return (
     <View style={styles.textInputContainer}>
       <TextInput
-        placeholder="Add new todo"
+        ref={inputRef}
+        placeholder="Add new todo here"
         onChangeText={onChangeText}
+        onBlur={onBlur}
         style={styles.textInput}
         multiline
         value={value}
@@ -53,11 +59,12 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 1,
     fontSize: typography.fontSize.large,
-    fontWeight: "700",
-    flexShrink: 1,
+    lineHeight: 30,
     borderWidth: 1,
-    borderColor: Colors.Background,
+    borderColor: Colors.BackgroundDark,
     borderRadius: spacing.small,
     paddingHorizontal: spacing.small,
+    paddingVertical: spacing.small,
+    marginRight: spacing.small,
   },
 });
